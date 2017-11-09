@@ -1,7 +1,7 @@
 <template>
   <div class="org-chart-container">
     <div class="org-chart-node-children">
-      <OrgChartNode v-for="tree in data" :node="tree" v-on:goUpClick="goUpClick"></OrgChartNode>
+      <OrgChartNode v-for="tree in data" :node="tree" v-on:goUpClick="goUpClick" v-on:goUpDrop="goUpDrop" ></OrgChartNode>
     </div>
   </div>
 </template>
@@ -21,10 +21,15 @@
     data() {
       return {}
     },
-    mounted() { },
+    mounted() {
+      
+    },
     methods: {
       goUpClick: function (event) {
         this.$emit('onClick', event)
+      },
+      goUpDrop: function(event){
+        this.$emit('onDrop', event)
       }
     }
   }

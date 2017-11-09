@@ -1,10 +1,10 @@
 <template>
   <div class="org-chart-node">
-    <div class="org-chart-node-label" v-on:click="clickNode">
+    <div class="org-chart-node-label" v-on:click="clickNode" v-draggable.nodes="node"  v-droppable.nodes="dropNode">
       {{ node.label }}
     </div>
-    <div class="org-chart-node-children">
-      <OrgChartNode v-for="childNode in node.children" :node="childNode"  v-on:goUpClick="goUpClick"></OrgChartNode>
+    <div class="org-chart-node-children" v-if="node.children.length > 0">
+      <OrgChartNode v-for="childNode in node.children" :node="childNode"  v-on:goUpClick="goUpClick" v-on:goUpDrop="goUpDrop" ></OrgChartNode>
     </div>
   </div>
 </template>
@@ -12,7 +12,8 @@
 <script>
   export default {
     name: 'OrgChartNode',
-    components: {},
+    components: {
+    },
     props: {
       node: {
         required: true,
@@ -29,7 +30,16 @@
       },
       goUpClick: function(event){
         this.$emit('goUpClick', event)
-      }
+      },
+      dropNode: function(node){
+        this.$emit('goUpDrop', {
+          node: JSON.parse(node),
+          to: this.node
+        })
+      },
+      goUpDrop: function(event){
+        this.$emit('goUpDrop', event)
+      },
     }
   }
 

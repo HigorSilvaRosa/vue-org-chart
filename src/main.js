@@ -2,8 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import Vue2Dnd from 'vue2-dnd'
 
 Vue.config.productionTip = false
+
+Vue.use(Vue2Dnd);
 
 /* eslint-disable no-new */
 new Vue({

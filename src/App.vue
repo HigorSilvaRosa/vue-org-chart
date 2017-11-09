@@ -1,5 +1,5 @@
 <template>
-  <OrgChart :data="testData" v-on:onClick="onClick"></OrgChart>
+  <OrgChart :data="testData" v-on:onClick="onClick" v-on:onDrop="onDrop"></OrgChart>
 </template>
 
 <script>
@@ -45,7 +45,10 @@
     },
     methods: {
       onClick: function (node) {
-        console.log(node.label+" was clicked!");
+        alert(node.label+" was clicked!");
+      },
+      onDrop: function(event){
+        console.log(event);
       }
     }
   }
