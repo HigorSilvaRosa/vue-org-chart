@@ -140,7 +140,6 @@ right connector from last child*/
     display: inline-block;
     padding: 10px;
     margin: 0px;
-    border: 1px solid #cccccc;
     font-size: 16px;
   }
 
