@@ -136,27 +136,15 @@ right connector from last child*/
   }
   
   .org-chart-node-label {
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    text-decoration: none;
-    color: #666;
-    font-family: arial, verdana, tahoma;
-    font-size: 11px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     display: inline-block;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
+    padding: 10px;
+    margin: 0px;
+    border: 1px solid #cccccc;
+    font-size: 16px;
   }
-  /*Time for some hover effects*/
-  /*We will apply the hover effect the the lineage of the element also*/
-  
-  .org-chart-node-label:hover,
-  .org-chart-node-label:hover+.org-chart-node-label {
-    background: #c8e4f8;
-    color: #000;
-    border: 1px solid #94a0b4;
+
+  .org-chart-node-label:hover{
+    background: #eeeeee;
   }
 </style>
