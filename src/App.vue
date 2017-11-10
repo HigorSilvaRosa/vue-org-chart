@@ -45,10 +45,10 @@
     },
     methods: {
       onClick: function (node) {
-        alert(node.label+" was clicked!");
+        alert(node.label + " was clicked!");
       },
-      onDrop: function(event){
-        console.log(event);
+      onDrop: function (event) {
+        alert(event.node.label + " was moved to " + event.to.label + ".");
       }
     }
   }

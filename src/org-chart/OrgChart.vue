@@ -1,7 +1,7 @@
 <template>
   <div class="org-chart-container">
     <div class="org-chart-node-children">
-      <OrgChartNode v-for="tree in data" :node="tree" v-on:goUpClick="goUpClick" v-on:goUpDrop="goUpDrop" ></OrgChartNode>
+      <OrgChartNode v-for="node in treeData" :node="node" v-on:goUpClick="goUpClick" v-on:goUpDrop="goUpDrop"></OrgChartNode>
     </div>
   </div>
 </template>
@@ -19,17 +19,35 @@
       }
     },
     data() {
-      return {}
+      let treeNodes = this.getChildren(this.data, null);
+      
+      return {
+        treeData: this.data
+      }
     },
     mounted() {
-      
+
     },
     methods: {
       goUpClick: function (event) {
         this.$emit('onClick', event)
       },
-      goUpDrop: function(event){
+      goUpDrop: function (event) {
         this.$emit('onDrop', event)
+      },
+
+      getChildren: function (nodes, parentId) {
+        let result = [];
+        for (let i in nodes) {
+          let node = nodes[i];
+          result.push({
+            id: node.id,
+            parentId: parentId,
+            label: node.label
+          })
+          result = result.concat(this.getChildren(node.children, node.id))
+        }
+        return result
       }
     }
   }
